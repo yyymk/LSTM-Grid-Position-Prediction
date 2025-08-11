@@ -45,12 +45,29 @@ matplotlib
 | `--hidden_size` | 128     | Number of hidden units in LSTM |
 
 ## Model Architecture
-The model is a single-layer LSTM followed by a fully connected layer for classification:
-Input: Sequences of 50 time steps, each with 2 features [x, y].
-LSTM Layer: Hidden size of 128, number of layers is 1.
-Fully Connected Layer: Projects LSTM output to 200 classes (grid positions).
-Output: 200 class probabilities for the next position.
-Loss: CrossEntropyLoss for multi-class classification.
+- The model is a single-layer LSTM followed by a fully connected layer for classification:
+- Input: Sequences of 50 time steps, each with 2 features [x, y].
+- LSTM Layer: Hidden size of 128, number of layers is 1.
+- Fully Connected Layer: Projects LSTM output to **200 classes** (grid positions).
+- Output: 200 class probabilities for the next position.
+- Loss: CrossEntropyLoss for multi-class classification.
+
+## Trained Model（WLSTM）
+- Dataset Size: The model was trained on **5940** sequences of trajectory data.
+- Data Split: The dataset was split into training and testing sets with a ratio of **80% training and 20% testing**.
+- Training Parameters:
+
+    Epochs: 50
+
+    Batch Size: 32
+
+    Hidden Size: 128 (number of units in the LSTM layer)
+
+    Optimizer: Adam optimizer with a learning rate of 0.001.
+
+    Loss Function: CrossEntropyLoss for multi-class classification.
+
+- The model achieved an accuracy of 23.57% on the test set after training (adjust with your actual accuracy).
 
 ## License
 This project is licensed under the MIT License.
