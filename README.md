@@ -92,7 +92,7 @@ The model is a single-layer LSTM followed by a fully connected layer for classif
 
     Loss Function: CrossEntropyLoss for multi-class classification.
 
-- In our demo with default parameter settings ($\tau=50, N=4$, and $t=50$), the model achieved an accuracy of $ 23.57% $ on the test set after training.
+- In our demo with default parameter settings ($\tau=50, N=4$, and $t=50$), the model achieved an accuracy of **23.57%** on the test set after training.
 
 ## License
 This project is licensed under the MIT License.
