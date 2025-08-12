@@ -56,14 +56,9 @@ matplotlib
 1. Prepare your dataset in CSV format similar to RP_power_data.csv (included in the repo).
 2. Run the training script:
    python3 WLSTM_train.py
-3. After training, the script will output $C_{t+1}$ for the $(t+1)$-th selection window. According to the following equations, the position $[x_{t+1}, y_{t+1}]$ of the TB usage in the $(t+1)$-th selection window can be calculated.
-$$
-C_{t+1}=(x_{t+1}-1)\times \tau+y_{t+1}-1,\\
-x_{t+1}\in[1,2,\cdots,N],\\
-y_{t+1}\in[1,2,\cdots,\tau].
-$$
+3. After training, the script will output $C_{t+1}$ for the $(t+1)$-th selection window. The position $[x_{t+1}, y_{t+1}]$ in the $(t+1)$-th selection window can be calculated by: $C_{t+1}=(y_{t+1}-1)\times N+x_{t+1}-1$, $x_{t+1}\in[1,2,\cdots,N]$, and $y_{t+1}\in[1,2,\cdots,\tau]$.
 
-5. By comparing the actual position with the predicted one, the accuracy can be obtained.
+4. By comparing the actual position with the predicted one, the accuracy can be obtained.
 
 ## Command-line Arguments
 | Argument        | Default | Description                    |
@@ -74,11 +69,12 @@ $$
 | `--hidden_size` | 128     | Number of hidden units in LSTM |
 
 ## Model Architecture
-- The model is a single-layer LSTM followed by a fully connected layer for classification:
-- Input: Sequences of 50 time steps, each with 2 features [x, y].
-- LSTM Layer: Hidden size of 128, number of layers is 1.
-- Fully Connected Layer: Projects LSTM output to **200 classes** (grid positions).
-- Output: 200 class probabilities for the next position.
+The model is a single-layer LSTM followed by a fully connected layer for classification:
+
+- Input: $t$ two-dimensional historical data $[x_{1}, y_{1}],[x_{2}, y_{2}],\cdots,[x_{t}, y_{t}]$.
+- LSTM Layer: Hidden size of $128$, number of layers is $1$.
+- Fully Connected Layer: Projects LSTM output to $(N\times\tau)$ classes.
+- Output: $(N\times\tau)$ classes for the $(t+1)$-th selection window.
 - Loss: CrossEntropyLoss for multi-class classification.
 
 ## Trained Model（WLSTM）
@@ -86,13 +82,13 @@ $$
 - Data Split: The dataset was split into training and testing sets with a ratio of **80% training and 20% testing**.
 - Training Parameters:
 
-    Epochs: 50
+    Epochs: $50$;
 
-    Batch Size: 32
+    Batch Size: $32$;
 
-    Hidden Size: 128 (number of units in the LSTM layer)
+    Hidden Size: $128$ (number of units in the LSTM layer);
 
-    Optimizer: Adam optimizer with a learning rate of 0.001.
+    Optimizer: Adam optimizer with a learning rate of $0.001$.
 
     Loss Function: CrossEntropyLoss for multi-class classification.
 
