@@ -19,7 +19,7 @@ Example data structure:
 ## Installation
 
 ### 1. Clone the repository:
-git clone https://github.com/yyymk/LSTM-Grid-Position-Prediction.git
+git clone https://github.com/yyymk/WLSTM.git
 
 ### 2. Install dependencies:
 pip install -r requirements.txt
@@ -33,7 +33,7 @@ matplotlib
 ## Usage
 1. Prepare your dataset in CSV format similar to RP_power_data.csv (included in the repo).
 2. Run the training script:
-   python3 LSTM_train.py
+   python3 WLSTM_train.py
 3. After training, the script will output accuracy and a plot showing predicted vs true positions.
 
 ## Command-line Arguments
