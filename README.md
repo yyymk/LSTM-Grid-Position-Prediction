@@ -1,4 +1,4 @@
-# LSTM-Grid-Position-Prediction
+# WLSTM
 A PyTorch implementation of a single-layer LSTM model that predicts the next resource block usage in a 4×50 grid, based on the previous 50 steps of trajectory data, applicable for V2X communication in SPS.
 ## Overview
 This project trains an LSTM-based neural network to predict the next (x, y) position on a 4×50 grid given the previous 50 positions. The model treats the task as a **200-class classification problem** (4×50 grid cells). The goal is to predict which cell in the grid the next position will fall into, based on a sequence of prior positions.
